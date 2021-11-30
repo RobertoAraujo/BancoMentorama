@@ -1,16 +1,16 @@
 package br.com.banco.mentorama;
 
+import br.com.banco.mentorama.classes.Conta;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class App {
-
-	public static void main(String[] args, char opcaod) {
-
+	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 
 		System.out.println("***** Banco Mentorama ** R$ **************");
-		System.out.println("Menu de Opção para você Cliente amigo !");
+		System.out.println("Menu de OpÃ§Ã£o para vocÃª Cliente amigo !");
 
 		System.out.println(" 1 - Criar Conta ");
 		System.out.println(" 2 - Sacar ");
@@ -20,9 +20,9 @@ public class App {
 		System.out.println(" 6 - Mostrar montante disponivel nas contas");
 		System.out.println(" 7 - sair");
 
-		System.out.println(" Escolha a opção desejada :");
+		System.out.println(" Escolha a OpÃ§Ã£o desejada :");
 
-		System.out.println("Digita sua Opção : ");
+		System.out.println("Digita sua OpÃ§Ã£o : ");
 		int opcao = entrada.nextInt();
 
 		switch (opcao) {
@@ -30,7 +30,7 @@ public class App {
 			Scanner tconta = new Scanner(System.in);
 			System.out.println("1 - Conta Corrente");
 			System.out.println("2 - Conta Salario");
-			System.out.println("3 - Conta Poupança");
+			System.out.println("3 - Conta PoupanÃ§a");
 			System.out.println("4 - Conta Juridica");
 			System.out.println("Tipo de Conta");
 			int val = tconta.nextInt();
@@ -51,11 +51,12 @@ public class App {
 					Scanner cpfContaCorrente = new Scanner(System.in);
 					System.out.println("Digite o CPf :");
 					String recebCpfConta = cpfContaCorrente.next();
-	
+
+					String  agenciaConta1 = "1234-55";
 					int digitoConta = new Random().nextInt(100) + 10;
 					int contadousuario = new Random().nextInt(100) + 1188;
 					System.out.println("Nome Do Titular: " + recebNomeConta + "  CPF DO Titular: " + recebCpfConta
-							+ " Sua conta CC:" + contadousuario + "-" + digitoConta);
+							+ " Sua conta CC:" + contadousuario + "-" + "Sua AG :"+agenciaConta1);
 					
 					@SuppressWarnings("resource")
 					Scanner escolhas = new Scanner(System.in);
@@ -73,10 +74,11 @@ public class App {
 				System.out.println("Digite o CPf :");
 				String recebCpfConta2 = CriaConta2.next();
 
+				String  agenciaConta2 = "1234-55";
 				int digitoConta2 = new Random().nextInt(100) + 10;
 				int contadousuario2 = new Random().nextInt(100) + 1188;
 				System.out.println("Nome Do Titular: " + recebNomeConta2 + "  CPF DO Titular: " + recebCpfConta2
-						+ " Sua conta CS:" + contadousuario2 + "-" + digitoConta2);
+						+ " Sua conta CS:" + contadousuario2 + "-" + digitoConta2 + "Sua AG :"+agenciaConta2);
 				break;
 
 			case 3:
@@ -87,10 +89,11 @@ public class App {
 				System.out.println("Digite o CPf :");
 				String recebCpfConta3 = CriaConta3.next();
 
+				String  agenciaConta3 = "1234-55";
 				int digitoConta3 = new Random().nextInt(100) + 10;
 				int contadousuario3 = new Random().nextInt(100) + 1188;
 				System.out.println("Nome Do Titular: " + recebNomeConta3 + "  CPF DO Titular : " + recebCpfConta3
-						+ " Sua conta CP :" + contadousuario3 + "-" + digitoConta3);
+						+ " Sua conta CP :" + contadousuario3 + "-" + digitoConta3 + "Sua AG :"+agenciaConta3);
 				break;
 			case 4:
 				Scanner CriaConta4 = new Scanner(System.in);
@@ -109,13 +112,26 @@ public class App {
 			default:
 				if (opcao >= 5) {
 
-					System.out.println("opa numero fora da opção :");
+					System.out.println("opa numero fora da opÃ§Ã£o :");
 				}
 				break;
 			}
 			System.out.println(val);
 			break;
 		case 2:
+			Conta contasS= new Conta();
+			Scanner Sacar = new Scanner(System.in);
+			System.out.println("**************** Bem Vindo Sacar Granar *****************");
+			System.out.println("Digite o nome valor que seseja sacar :");
+			double sacar1 = Sacar.nextDouble();
+
+				if (contasS.getSaldo() <= 0 ){
+					System.out.println("NÃ£o e possivel sacar!!!!!!!!!!!!");
+				}if(contasS.getSaldo() < sacar1){
+					System.out.println("Opa o seu saldo e de: "+ contasS.getSaldo());
+				} else{
+					System.out.println("Sque bem sucedido seu novo saldoe de :"+contasS.getSaldo());
+				}
 
 			break;
 		case 3:
@@ -131,7 +147,7 @@ public class App {
 
 			break;
 		case 7:
-			System.out.println("Você saiu do menu !!! ");
+			System.out.println("VocÃª saiu do menu !!! ");
 			break;
 		}
 

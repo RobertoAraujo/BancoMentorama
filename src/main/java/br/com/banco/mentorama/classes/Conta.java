@@ -1,6 +1,7 @@
 package br.com.banco.mentorama.classes;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Conta implements Serializable{
 
@@ -9,6 +10,7 @@ public class Conta implements Serializable{
 	private String titular;
 	private int numeroAgencia;
 	private int numerocConta;
+	private double saldo;
 	
 	public String getTitular() {
 		return titular;
@@ -28,43 +30,25 @@ public class Conta implements Serializable{
 	public void setNumerocConta(int numerocConta) {
 		this.numerocConta = numerocConta;
 	}
-	
+	public double getSaldo() { return saldo; }
+	public void setSaldo(double saldo) { this.saldo = saldo;}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Conta)) return false;
+		Conta conta = (Conta) o;
+		return getNumeroAgencia() == conta.getNumeroAgencia() && getNumerocConta() == conta.getNumerocConta() && Double.compare(conta.getSaldo(), getSaldo()) == 0 && getTitular().equals(conta.getTitular());
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + numeroAgencia;
-		result = prime * result + numerocConta;
-		result = prime * result + ((titular == null) ? 0 : titular.hashCode());
-		return result;
+		return Objects.hash(getTitular(), getNumeroAgencia(), getNumerocConta(), getSaldo());
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Conta other = (Conta) obj;
-		if (numeroAgencia != other.numeroAgencia)
-			return false;
-		if (numerocConta != other.numerocConta)
-			return false;
-		if (titular == null) {
-			if (other.titular != null)
-				return false;
-		} else if (!titular.equals(other.titular))
-			return false;
-		return true;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Conta [titular=" + titular + ", numeroAgencia=" + numeroAgencia + ", numerocConta=" + numerocConta
-				+ "]";
+		return "Conta{" + "titular='" + titular + '\'' + ", numeroAgencia=" + numeroAgencia +
+				", numerocConta=" + numerocConta + ", saldo=" + saldo + '}';
 	}
-	
-	
-	
 }

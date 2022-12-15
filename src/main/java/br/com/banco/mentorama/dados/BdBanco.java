@@ -9,7 +9,7 @@ public class BdBanco {
 	private static final String SENHA_DB = "";
 	private static final String URL_DB = "jdbc:mysql://localhost:3306/bancoMentorama";
 	
-	//method para craiar conex„o
+	//method para craiar conex√£o
 	public static Connection criaConexao() throws Exception {
 	//  Class.forName("oracle.jdbc.driver.OracleDriver");
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -40,5 +40,5 @@ public class BdBanco {
 			e.printStackTrace();
 		}
 	}*/
-	
+
 }

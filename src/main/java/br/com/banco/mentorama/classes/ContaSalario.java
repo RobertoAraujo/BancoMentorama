@@ -1,49 +1,32 @@
 package br.com.banco.mentorama.classes;
 
-public class ContaSalario extends Conta{
+import java.io.Serializable;
 
-	private static final long serialVersionUID = 1L;
-	
-	private String fontePagadora;
+public class ContaSalario extends Conta implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String fontePagadora;
 
-	public String getFontePagadora() {
-		return fontePagadora;
-	}
+    public ContaSalario(String titular, int numeroAgencia, int numerocConta, double saldo, String fontePagadora) {
+        super(titular, numeroAgencia, numerocConta, saldo);
+        this.fontePagadora = fontePagadora;
+    }
 
-	public void setFontePagadora(String fontePagadora) {
-		this.fontePagadora = fontePagadora;
-	}
+    public String getFontePagadora() {
+        return fontePagadora;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((fontePagadora == null) ? 0 : fontePagadora.hashCode());
-		return result;
-	}
+    public void setFontePagadora(String fontePagadora) {
+        this.fontePagadora = fontePagadora;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ContaSalario other = (ContaSalario) obj;
-		if (fontePagadora == null) {
-			if (other.fontePagadora != null)
-				return false;
-		} else if (!fontePagadora.equals(other.fontePagadora))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "ContaSalario [fontePagadora=" + fontePagadora + "]";
-	}
-	
-	
-
+    @Override
+    public String toString() {
+        return "ContaSalario{" +
+                "titular=" + getTitular() + "\n" +
+                "numeroAgencia=" + getNumeroAgencia() + "\n" +
+                "numeroConta=" + getNumerocConta() + "\n" +
+                "saldo" + getSaldo() + "\n" +
+                "fontePagadora='" + fontePagadora + '\'' +
+                '}';
+    }
 }
